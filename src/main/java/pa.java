@@ -1,9 +1,4 @@
-import InterAndAbstract.sayAbstract;
-import InterAndAbstract.sayExtend;
-import InterAndAbstract.sayImpl;
-import InterAndAbstract.sayImplService;
 import entity.Testentity4ThreadSychronized;
-import entity.TestentityNoImplHaveRun;
 
 public class pa {
     public static void main(String[] args) {

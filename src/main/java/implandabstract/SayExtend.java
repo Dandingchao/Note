@@ -1,6 +1,6 @@
-package InterAndAbstract;
+package implandabstract;
 
-public class sayExtend extends sayAbstract{
+public class SayExtend extends SayAbstract {
 
     @Override
     public void say() {

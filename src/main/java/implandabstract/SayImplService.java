@@ -1,6 +1,6 @@
-package InterAndAbstract;
+package implandabstract;
 
-public class sayImplService implements sayImpl {
+public class SayImplService implements SayImpl {
     @Override
     public void sayHi(){
         System.out.println("say hi");
