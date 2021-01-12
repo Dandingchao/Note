@@ -9,10 +9,10 @@ import java.util.HashSet;
 import java.util.Set;
 public class redis {
     public static void main(String[] args) {
+        RedisConf redisConf=new RedisConf();
         /**
          * 集群设置，但是目前没有集群。。
-         */
-        /*
+         *//*
         JedisPoolConfig config=new JedisPoolConfig();
         config.setMaxTotal(30);
         config.setMaxIdle(2);
@@ -22,8 +22,9 @@ public class redis {
         jc.set("name","超超");
         System.out.println(jc.get("name"));*/
 
-        Jedis jedis=new Jedis("172.30.123.240",6333);
+        Jedis jedis=new Jedis(redisConf.getIpAddress(),redisConf.getPort());
         //jedis.auth();
+        jedis.set("hi","wobuhao");
         System.out.println(jedis.ping());
     }
 }
