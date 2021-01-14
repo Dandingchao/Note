@@ -1,0 +1,10 @@
+java中的json类，实现了可序列化
+@restcontroller=@controll+@responsebody
+@postmapping/@getmapping 等价于@requestmapping声明了具体的请求方法
+@transient注解定义不用被序列化
+
+springboot配置过于简单
+@enablerabbit 即设置了启用rabbitmq存储session
+@Async允许异步调用，对被注释的方法发送请求后不等待方法回复直接继续执行指令
+
+@table 持久层注解，用于完成entity类和数据库表的映射
