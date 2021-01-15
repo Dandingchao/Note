@@ -12,4 +12,7 @@ public class DaddyDog {
     public static DaddyDog getDaddyDog() {
         return daddyDog;
     }
+    public void sayHi(){
+        System.out.println("hi");
+    }
 }
