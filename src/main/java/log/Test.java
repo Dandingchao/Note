@@ -9,10 +9,8 @@ public class Test {
     private static final Logger logger=  LoggerFactory.getLogger(Test.class);
     @org.junit.Test
     public void test(){
-        //log.debug("debug");
-        logger.error("debug");
-        int[] index=new int[5];
-
-
+        System.out.println(Enum1.HI.code()+Enum1.HL.code());
+        Enum1.HL.setCode(500);
+        System.out.println(Enum1.HL.code());
     }
 }
