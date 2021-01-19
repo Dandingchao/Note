@@ -1,5 +1,6 @@
 package log;
 
+import implandabstract.SayImplService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,5 +13,6 @@ public class Test {
         System.out.println(Enum1.HI.code()+Enum1.HL.code());
         Enum1.HL.setCode(500);
         System.out.println(Enum1.HL.code());
+        System.out.println(SayImplService.class);
     }
 }

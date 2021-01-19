@@ -15,7 +15,7 @@ import java.util.concurrent.*;
 @Slf4j
 
 public class biexiele {
-
+    private int a;
     public static void main(String[] args) {
         DaddyDog t=DaddyDog.getDaddyDog();
         Dog tdsa=new Dog();
