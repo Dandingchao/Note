@@ -31,3 +31,6 @@ filtered:按表条件过滤的行百分比
 Extra:执行情况的描述和说明
 
 explain 的rows参数只是估算
+
+https://blog.csdn.net/lilongsy/article/details/95184594
+https://www.cnblogs.com/xiaoqiang-code/p/11404149.html
