@@ -3,6 +3,7 @@ package spring;
 import spring.entity.Singleton;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import spring.service.Server3;
 import spring.service.service1;
 
 public class Application {
@@ -22,6 +23,10 @@ public class Application {
         System.out.println(singleton==singleton1);
         System.out.println(singleton1==singleton2);
         System.out.println(singleton1.t);
+
+
+        Server3 server3=(Server3) applicationContext.getBean("server3");
+        server3.server();
         //service1 service =(service1)applicationContext.getBean("service1");
         //service.sayHi();
         ApplicationContext applicationContext1=new AnnotationConfigApplicationContext();

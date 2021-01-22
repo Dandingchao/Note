@@ -1,0 +1,2 @@
+mvcc    multi-version concurrency control多版本控制并发
+是mysql innodb引擎
