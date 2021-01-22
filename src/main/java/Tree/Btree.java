@@ -77,7 +77,13 @@ public class Btree {
             System.out.println(root.getValue());
             if (root.getRight()!=null)
                 stack.push(root.getRight());
-
+            if (root.getLetf()!=null){
+                root=root.getLetf();
+            } else if (!stack.empty()){
+                root=stack.pop();
+            } else {
+                break;
+            }
         }
     }
 
@@ -89,11 +95,47 @@ public class Btree {
         }
     }
 
+    public void midOrderBtree2(Btree root){
+        Btree node=root;
+        Stack<Btree> stack=new Stack<>();
+        while (node!=null){
+            while (node.getLetf()!=null) {
+                stack.push(node);
+                node=node.getLetf();
+            }
+            node=stack.pop();
+            System.out.println(node.getValue());
+            if (node.getRight()!=null){
+                node=node.getRight();
+            }else if (!stack.empty())
+            {
+                node=stack.pop();
+            }else {
+                break;
+            }
+        }
+    }
+
     public void lasOrderBtree1(Btree root){
         if (root!=null){
             lasOrderBtree1(root.getLetf());
             lasOrderBtree1(root.getRight());
             System.out.println(root.getValue());
+        }
+    }
+
+    public void lasOrderBtree2(Btree root){
+        Stack<Integer> res =new Stack<>();
+        Stack<Btree> src=new Stack<>();
+        Btree pr=null;
+        while (root!=null){
+            res.push(root.getValue());
+            if (root.getLetf()!=null){
+                src.push(root.getLetf());
+            }
+            if (root.getRight()!=null){
+                root=root.getRight();
+            }
         }
     }
 }
