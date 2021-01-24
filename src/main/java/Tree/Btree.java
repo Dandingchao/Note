@@ -219,27 +219,16 @@ public class Btree {
         node.setRight(preAndMid(Arrays.copyOfRange(pre,index,pre.length),Arrays.copyOfRange(mid,index+1,mid.length)));
         return node;
     }
-    //返回二叉树值最大的路劲,
+    //返回二叉树值最大的路劲,要将result作为静态变量，来使用就能让result存储在调用完函数后result的值能够得到记录
     public int mostValue(Btree note,int result){
         if (note==null)
             return 0;
-        int subLeft=mostValue(note.getleft(),result);
-        int subRight=mostValue(note.getRight(),result);
-        if (note.getValue()+subLeft+subRight>result)
-            result=note.getValue()+subLeft+subRight;
-        if (subLeft>subRight&&subLeft>=0){
-            if (subLeft+note.getValue()>result)
-                result=subLeft+note.getValue();
-            return subLeft+note.getValue();
+        int subLeft=Math.max(0,mostValue(note.getleft(),result));
+        int subRight=Math.max(0,mostValue(note.getRight(),result));
+        if (subLeft+subRight+note.getValue()>result){
+            result=subLeft+subRight+note.getValue();
         }
-        if (subLeft<subRight&&subRight>=0){
-            if (subRight+note.getValue()>result)
-                result=subRight+note.getValue();
-            return subRight+note.getValue();
-        }
-        if (note.getValue()>result)
-            result=note.getValue();
-        return note.getValue();
+        return Math.max(subLeft,subRight)+note.getValue();
     }
 
 }
