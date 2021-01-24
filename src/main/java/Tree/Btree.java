@@ -1,6 +1,6 @@
 package Tree;
 
-import java.util.Stack;
+import java.util.*;
 
 public class Btree {
     private Btree letf;
@@ -159,6 +159,66 @@ public class Btree {
         while (!stack1.empty()){
             System.out.print(stack1.pop().getValue()+" ");
         }
+    }
+    //层次遍历
+    public static void layerVisit(Btree root){
+        Queue<Btree> queue=new LinkedList<>();
+        int floor=0;
+        int lastFloorNum=1;
+        int nextFloorNum=0;
+        int thisFloorNUm=0;
+        while (root!=null||!queue.isEmpty()){
+            System.out.print(root.getValue()+" ");
+            thisFloorNUm++;
+            if (root.getLetf()!=null){
+                queue.add(root.getLetf());
+                nextFloorNum++;
+            }
+            if (root.getRight()!=null){
+                queue.add(root.getRight());
+                nextFloorNum++;
+            }
+            if (thisFloorNUm==lastFloorNum){
+                thisFloorNUm=0;
+                lastFloorNum=nextFloorNum;
+                nextFloorNum=0;
+            }
+            root=queue.poll();
+        }
+    }
+    //
+    public static int isBalance(Btree root){
+        if (root==null)
+            return 0;
+        if (root.getRight()==null&&root.getLetf()==null)
+            return 1;
+        if (root!=null)
+        {   int cha=isBalance(root.getRight())-isBalance(root.getLetf());
+            if (cha>1||cha<-1)
+            {
+                System.out.println("this tree is not balanced");
+            }
+            return cha;
+
+        }return 0;
+    }
+    //根据前序和中序,前序根节点返回二叉树，问题在于如果在中序之前出现与根节点相同值则会出现错误。
+
+    public Btree preAndMid(int[] pre,int[] mid){
+        if (mid.length==0||pre.length==0)
+            return null;
+        Btree node=new Btree();
+        node.setValue(pre[0]);
+        int index=0;
+        for (int i=0;i<mid.length;i++){
+            if (mid[i]==pre[0]) {
+                index=i;
+                break;
+            }
+        }
+        node.setLetf(preAndMid(Arrays.copyOfRange(pre,1,index),Arrays.copyOfRange(mid,0,index)));
+        node.setRight(preAndMid(Arrays.copyOfRange(pre,index,pre.length),Arrays.copyOfRange(mid,index+1,mid.length)));
+        return node;
     }
 
 }
