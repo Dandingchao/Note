@@ -3,12 +3,12 @@ package Tree;
 import java.util.*;
 
 public class Btree {
-    private Btree letf;
+    private Btree left;
     private Btree right;
     private int value;
 
-    public Btree getLetf() {
-        return letf;
+    public Btree getleft() {
+        return left;
     }
 
     public Btree getRight() {
@@ -19,8 +19,8 @@ public class Btree {
         return value;
     }
 
-    public void setLetf(Btree letf) {
-        this.letf = letf;
+    public void setleft(Btree left) {
+        this.left = left;
     }
 
     public void setRight(Btree right) {
@@ -34,10 +34,10 @@ public class Btree {
     public static Btree reverse(Btree root){
         if (root==null)
             return null;
-        Btree left=root.letf;
-        root.setLetf(root.getRight());
+        Btree left=root.left;
+        root.setleft(root.getRight());
         root.setRight(left);
-        reverse(root.getLetf());
+        reverse(root.getleft());
         reverse(root.getRight());
         return root;
     }
@@ -54,10 +54,10 @@ public class Btree {
                 insert(root.getRight(),node);
             }
         }else{
-            if (root.getLetf()==null){
-                root.setLetf(node);
+            if (root.getleft()==null){
+                root.setleft(node);
             }else{
-                insert(root.getLetf(),node);
+                insert(root.getleft(),node);
             }
         }
         return root;
@@ -66,7 +66,7 @@ public class Btree {
     public static void preOrderBtree1(Btree root){
         if (root!=null){
             System.out.print(root.getValue()+" ");
-            preOrderBtree1(root.getLetf());
+            preOrderBtree1(root.getleft());
             preOrderBtree1(root.getRight());
         }
     }
@@ -77,8 +77,8 @@ public class Btree {
             System.out.print(root.getValue()+" ");
             if (root.getRight()!=null)
                 stack.push(root.getRight());
-            if (root.getLetf()!=null){
-                root=root.getLetf();
+            if (root.getleft()!=null){
+                root=root.getleft();
             } else if (!stack.empty()){
                 root=stack.pop();
             } else {
@@ -90,7 +90,7 @@ public class Btree {
 
     public static void midOrderBtree1(Btree root){
         if (root!=null){
-            midOrderBtree1(root.getLetf());
+            midOrderBtree1(root.getleft());
             System.out.print(root.getValue()+" ");
             midOrderBtree1(root.getRight());
         }
@@ -102,7 +102,7 @@ public class Btree {
         while (node!=null||!stack.empty()){
             while (node!=null) {
                 stack.push(node);
-                node=node.getLetf();
+                node=node.getleft();
             }
             node=stack.pop();
             System.out.print(node.getValue()+" ");
@@ -113,7 +113,7 @@ public class Btree {
 
     public static void lasOrderBtree1(Btree root){
         if (root!=null){
-            lasOrderBtree1(root.getLetf());
+            lasOrderBtree1(root.getleft());
             lasOrderBtree1(root.getRight());
             System.out.print(root.getValue()+" ");
         }
@@ -127,7 +127,7 @@ public class Btree {
         while (root!=null||!src.empty()){
             if (root!=null&&!flag){
                 src.push(root);
-                root=root.getLetf();
+                root=root.getleft();
             }else{
                 root=src.peek();
                 if(root.getRight()!=null&&root.getRight()!=pr){
@@ -154,7 +154,7 @@ public class Btree {
                 root=root.getRight();
             }
             root=stack.pop();
-            root=root.getLetf();
+            root=root.getleft();
         }
         while (!stack1.empty()){
             System.out.print(stack1.pop().getValue()+" ");
@@ -170,8 +170,8 @@ public class Btree {
         while (root!=null||!queue.isEmpty()){
             System.out.print(root.getValue()+" ");
             thisFloorNUm++;
-            if (root.getLetf()!=null){
-                queue.add(root.getLetf());
+            if (root.getleft()!=null){
+                queue.add(root.getleft());
                 nextFloorNum++;
             }
             if (root.getRight()!=null){
@@ -190,10 +190,10 @@ public class Btree {
     public static int isBalance(Btree root){
         if (root==null)
             return 0;
-        if (root.getRight()==null&&root.getLetf()==null)
+        if (root.getRight()==null&&root.getleft()==null)
             return 1;
         if (root!=null)
-        {   int cha=isBalance(root.getRight())-isBalance(root.getLetf());
+        {   int cha=isBalance(root.getRight())-isBalance(root.getleft());
             if (cha>1||cha<-1)
             {
                 System.out.println("this tree is not balanced");
@@ -203,7 +203,6 @@ public class Btree {
         }return 0;
     }
     //根据前序和中序,前序根节点返回二叉树，问题在于如果在中序之前出现与根节点相同值则会出现错误。
-
     public Btree preAndMid(int[] pre,int[] mid){
         if (mid.length==0||pre.length==0)
             return null;
@@ -216,9 +215,31 @@ public class Btree {
                 break;
             }
         }
-        node.setLetf(preAndMid(Arrays.copyOfRange(pre,1,index),Arrays.copyOfRange(mid,0,index)));
+        node.setleft(preAndMid(Arrays.copyOfRange(pre,1,index),Arrays.copyOfRange(mid,0,index)));
         node.setRight(preAndMid(Arrays.copyOfRange(pre,index,pre.length),Arrays.copyOfRange(mid,index+1,mid.length)));
         return node;
+    }
+    //返回二叉树值最大的路劲,
+    public int mostValue(Btree note,int result){
+        if (note==null)
+            return 0;
+        int subLeft=mostValue(note.getleft(),result);
+        int subRight=mostValue(note.getRight(),result);
+        if (note.getValue()+subLeft+subRight>result)
+            result=note.getValue()+subLeft+subRight;
+        if (subLeft>subRight&&subLeft>=0){
+            if (subLeft+note.getValue()>result)
+                result=subLeft+note.getValue();
+            return subLeft+note.getValue();
+        }
+        if (subLeft<subRight&&subRight>=0){
+            if (subRight+note.getValue()>result)
+                result=subRight+note.getValue();
+            return subRight+note.getValue();
+        }
+        if (note.getValue()>result)
+            result=note.getValue();
+        return note.getValue();
     }
 
 }
