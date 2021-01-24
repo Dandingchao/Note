@@ -31,7 +31,7 @@ public class Btree {
         this.value = value;
     }
     //翻转
-    public Btree reverse(Btree root){
+    public static Btree reverse(Btree root){
         if (root==null)
             return null;
         Btree left=root.letf;
@@ -42,7 +42,7 @@ public class Btree {
         return root;
     }
     //插入二叉搜索树
-    public Btree insert(Btree root,Btree node){
+    public static Btree insert(Btree root,Btree node){
         if (root==null)
             return node;
         if (node==null)
@@ -63,18 +63,18 @@ public class Btree {
         return root;
     }
 
-    public void preOrderBTree1(Btree root){
+    public static void preOrderBtree1(Btree root){
         if (root!=null){
-            System.out.println(root.getValue());
-            preOrderBTree1(root.getLetf());
-            preOrderBTree1(root.getRight());
+            System.out.print(root.getValue()+" ");
+            preOrderBtree1(root.getLetf());
+            preOrderBtree1(root.getRight());
         }
     }
 
-    public void preOrderBtree2(Btree root){
+    public static void preOrderBtree2(Btree root){
         Stack<Btree> stack=new Stack<>();
         while (root!=null){
-            System.out.println(root.getValue());
+            System.out.print(root.getValue()+" ");
             if (root.getRight()!=null)
                 stack.push(root.getRight());
             if (root.getLetf()!=null){
@@ -85,57 +85,80 @@ public class Btree {
                 break;
             }
         }
+        System.out.println();
     }
 
-    public void midOrderBtree1(Btree root){
+    public static void midOrderBtree1(Btree root){
         if (root!=null){
             midOrderBtree1(root.getLetf());
-            System.out.println(root.getValue());
+            System.out.print(root.getValue()+" ");
             midOrderBtree1(root.getRight());
         }
     }
 
-    public void midOrderBtree2(Btree root){
+    public static void midOrderBtree2(Btree root){
         Btree node=root;
         Stack<Btree> stack=new Stack<>();
-        while (node!=null){
-            while (node.getLetf()!=null) {
+        while (node!=null||!stack.empty()){
+            while (node!=null) {
                 stack.push(node);
                 node=node.getLetf();
             }
             node=stack.pop();
-            System.out.println(node.getValue());
-            if (node.getRight()!=null){
-                node=node.getRight();
-            }else if (!stack.empty())
-            {
-                node=stack.pop();
-            }else {
-                break;
-            }
+            System.out.print(node.getValue()+" ");
+            node=node.getRight();
         }
+        System.out.println();
     }
 
-    public void lasOrderBtree1(Btree root){
+    public static void lasOrderBtree1(Btree root){
         if (root!=null){
             lasOrderBtree1(root.getLetf());
             lasOrderBtree1(root.getRight());
-            System.out.println(root.getValue());
+            System.out.print(root.getValue()+" ");
         }
     }
-
-    public void lasOrderBtree2(Btree root){
+    //设置标志，记录子节点是否被遍历过，同事设置标志左子节点是否被遍历过
+    public static void lasOrderBtree2(Btree root){
         Stack<Integer> res =new Stack<>();
         Stack<Btree> src=new Stack<>();
         Btree pr=null;
-        while (root!=null){
-            res.push(root.getValue());
-            if (root.getLetf()!=null){
-                src.push(root.getLetf());
-            }
-            if (root.getRight()!=null){
-                root=root.getRight();
+        boolean flag=false;
+        while (root!=null||!src.empty()){
+            if (root!=null&&!flag){
+                src.push(root);
+                root=root.getLetf();
+            }else{
+                root=src.peek();
+                if(root.getRight()!=null&&root.getRight()!=pr){
+                    root=root.getRight();
+                    flag=false;
+                }else {
+                    System.out.print(root.getValue()+" ");
+                    pr=root;
+                    root=null;
+                    flag=true;
+                    src.pop();
+                }
             }
         }
     }
+    //后序遍历顺序，左子节点，右子节点，根节点  先序遍历顺序根节点，左子节点，右子节点，中序遍历顺序左子节点，根节点，右子节点
+    public static void lasOrderBtree3(Btree root){
+        Stack<Btree> stack=new Stack<>();
+        Stack<Btree> stack1=new Stack<>();
+        while (root!=null||!stack.empty()) {
+            while (root!=null){
+                stack1.push(root);
+                stack.push(root);
+                root=root.getRight();
+            }
+            root=stack.pop();
+            root=root.getLetf();
+        }
+        while (!stack1.empty()){
+            System.out.print(stack1.pop().getValue()+" ");
+        }
+    }
+
 }
