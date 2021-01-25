@@ -1,11 +1,11 @@
+import threadpool.entity.TestEntity1Thread;
+import threadpool.entity.TestEntity2Thread;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.sun.org.apache.bcel.internal.generic.FSUB;
 import entity.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.management.ManagementFactory;
-import java.sql.PreparedStatement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -33,8 +33,8 @@ public class biexiele {
         dja.get("sadj");
         //创建线程
         ExecutorService fixedThreadPool=Executors.newFixedThreadPool(10);
-        Testentity1Thread testentity1Thread=new Testentity1Thread();
-        Testentity2Thread testentity2Thread=new Testentity2Thread();
+        TestEntity1Thread testentity1Thread=new TestEntity1Thread();
+        TestEntity2Thread testentity2Thread=new TestEntity2Thread();
         FutureTask<Integer> futureTask=new FutureTask<Integer>(testentity2Thread);
         Thread thread=new Thread(testentity1Thread);
         Thread thread1=new Thread(futureTask);

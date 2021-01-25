@@ -1,14 +1,14 @@
-package entity;
-
-import org.omg.CORBA.Current;
+package threadpool.entity;
 
 import java.lang.management.ManagementFactory;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.SimpleFormatter;
 
-public class Testentity1Thread implements Runnable {
+/**
+ * 创建一个线程，令其报错
+ */
+public class TestEntity1Thread implements Runnable {
     private String hello;
     private int count;
     private List<Integer> list;

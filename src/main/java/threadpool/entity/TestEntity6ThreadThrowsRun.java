@@ -1,6 +1,6 @@
-package entity;
+package threadpool.entity;
 
-public class Testentity6ThreadThrowsRun implements Runnable{
+public class TestEntity6ThreadThrowsRun implements Runnable{
 
     @Override
     public void run() {

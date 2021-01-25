@@ -1,8 +1,8 @@
-package entity;
+package threadpool.entity;
 
 import java.util.concurrent.Callable;
 
-public class Testentity5ThreadThrowsCall implements Callable {
+public class TestEntity5ThreadThrowsCall implements Callable {
 
     @Override
     public Object call() throws Exception {

@@ -1,6 +1,6 @@
-package entity;
+package threadpool.entity;
 
-public class Testentity3ThreadCountNumber implements Runnable{
+public class TestEntity3ThreadCountNumber implements Runnable{
     private static int count=0;
 
     @Override

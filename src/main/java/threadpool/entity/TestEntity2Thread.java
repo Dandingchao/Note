@@ -1,14 +1,14 @@
-package entity;
-
-import org.omg.CORBA.Current;
+package threadpool.entity;
 
 import java.lang.management.ManagementFactory;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.Callable;
-import java.util.logging.SimpleFormatter;
 
-public class Testentity2Thread implements Callable<Integer>{
+/**
+ * 创建线程，打印当前JVM的进程ID和线程名和时间
+ */
+public class TestEntity2Thread implements Callable<Integer>{
     private String hello;
     private int count;
 

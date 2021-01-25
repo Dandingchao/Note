@@ -1,6 +1,12 @@
-package entity;
+package threadpool.entity;
 
-public class Testentity4ThreadSychronized implements Runnable{
+/**
+ * 线程池.synchronized同步锁,简而言之锁的对象是普通方法的话，会锁住这个实例类的所有带有synchronized修饰的方法
+ * 如果锁住的是静态方法的话会锁住这个类的class类对象，被synchronized修饰的所有静态方法都会被锁住
+ * 如果是用synchronized.()方法来锁住一个代码块的话，括号内的类对象会被锁住，类对象指class对象，而不是具体的某个对象
+ *
+ */
+public class TestEntity4ThreadSychronized implements Runnable{
     private int count;
 
     private volatile int count2;
@@ -34,8 +40,8 @@ public class Testentity4ThreadSychronized implements Runnable{
     }//方法锁
 
     public void say2(){
-        synchronized (Testentity4ThreadSychronized.class){//锁类，静态方法或实例方法都被锁住
-            t=4;
+        t=4;
+        synchronized (TestEntity4ThreadSychronized.class){//锁类，静态方法或实例方法都被锁住
             System.out.println("hi I'm "+Thread.currentThread().getName());
             try {
                 System.out.println("I'm locked "+Thread.currentThread().getName());
