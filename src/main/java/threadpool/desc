@@ -1,0 +1,9 @@
+java的锁方法
+通常是用synchronized和lock类中的reentranlock来实现锁的
+synchronized:
+JDK自带的锁功能，通过在编译后的代码前后加上monitor enter和monitor exit来锁住代码。
+synchronized是重锁，由JVM来实现，消耗资源很大，因为要保存上下文信息，切换上下文，消耗很多时间
+synchronized锁通常用来修饰普通方法，静态方法，和代码块
+修饰普通方法即锁住该类的该实例对象，对其他对象和静态方法无影响，因此如果如此使用可能会造成代码逻辑混乱
+修饰静态方法和代码块都是修饰该类的class对象，所有的被synchronized修饰的静态方法都会被锁住无法访问。
+推荐优先使用锁代码块的方法，尽可能的缩小锁的范围。
