@@ -4,8 +4,10 @@ java中的json类，实现了可序列化
 @transient注解定义不用被序列化
 
 springboot配置过于简单
-@enablerabbit 即设置了启用rabbitmq存储session
-@Async允许异步调用，对被注释的方法发送请求后不等待方法回复直接继续执行指令
+@enableRabbit 即设置了启用rabbitmq存储session
+@Async允许异步调用，对被注释的方法发送请求后不等待方法回复直接继续执行指令,即在线程池中指定一个空线程来执行该操作
+使用该注解需要对async进行配置，参数为类似Java创建线程池的参数
+@Transactional通常使用在类上或者类的方法上，如果在spring中要在接口上使用这个注解，那么必须设置基于接口的代理方式时它才能够生效
 
 @table 持久层注解，用于完成entity类和数据库表的映射
 
