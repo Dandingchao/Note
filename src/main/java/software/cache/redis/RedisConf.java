@@ -1,4 +1,4 @@
-package database.redis;
+package software.cache.redis;
 
 public class RedisConf {
     private String ipAddress="172.30.123.240";

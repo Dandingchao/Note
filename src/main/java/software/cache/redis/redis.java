@@ -1,15 +1,7 @@
-package database.redis;
+package software.cache.redis;
 
-import entity.Dog;
-import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisCluster;
-import redis.clients.jedis.JedisPoolConfig;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 public class redis {
     /**
     * @Description:  

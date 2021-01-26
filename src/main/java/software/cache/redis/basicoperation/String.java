@@ -1,6 +1,6 @@
-package database.redis.basicoperation;
+package software.cache.redis.basicoperation;
 
-import database.redis.RedisConf;
+import software.cache.redis.RedisConf;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
 
