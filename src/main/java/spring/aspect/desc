@@ -1,0 +1,10 @@
+spring的aop编程实际上是代理模式的思维在spring的表现
+spring的aop和普通的使用JDK的动态代理生成代理类和cglib的动态代理的区别在于
+spring的aop过于沉重，会修改整个程序的所有相关代码，而使用JDK或者cglib的动态代理的话，你可以允许修改只在一定的范围内执行
+spring被aop生成代理的被代理类和生成的代理类都交由spring来管理
+如果只想要在某一小段执行代理，使用JDK或者cglib的动态代理
+
+spring的aop中有注解@Before,@After,@After-returning,@After-throwing
+@After-throwing和try.catch互相冲突，如果异常被try-catch拦截了，aop则拦截不到异常
+同时，after-throwing会把异常抛给上一层，而try-catch会直接处理异常不抛给上一层
+即你用了after-throwing仍旧需要在上一层catch异常并进行操作，否则程序会因为异常终止

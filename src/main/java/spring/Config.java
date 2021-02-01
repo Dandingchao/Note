@@ -1,14 +1,13 @@
 package spring;
 
+import org.aspectj.lang.annotation.Aspect;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScans;
 import org.springframework.context.annotation.Configuration;
-import spring.service.service1;
-
-import javax.annotation.Resource;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
 @ComponentScan()
+@EnableAspectJAutoProxy
 public class Config {
 
     /**

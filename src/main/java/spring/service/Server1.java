@@ -8,15 +8,15 @@ import org.springframework.stereotype.Service;
 @Data
 @Lazy
 @Service
-public class service1 {
+public class Server1 {
     private String name;
-    public service1(){
+    public Server1(){
         String test="sdasada";
         System.out.println("initializing");
         test.toUpperCase();
         System.out.println(test);
     }
     public void sayHi(){
-        System.out.println("hi");
+        System.out.println("hi,I'm server1");
     }
 }
