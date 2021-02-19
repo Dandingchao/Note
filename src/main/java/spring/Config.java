@@ -1,9 +1,11 @@
 package spring;
 
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import threadpool.model.Entity1;
 
 @Configuration
 @ComponentScan()
@@ -19,5 +21,10 @@ public class Config {
     */
     public void sayHi(){
         System.out.println("hi,I'm config");
+    }
+
+    @Bean
+    public Entity1 entity1(){
+        return new Entity1();
     }
 }

@@ -8,6 +8,7 @@ import spring.service.Server1;
 import spring.service.Server2;
 import spring.service.Server3;
 import sun.nio.ch.ThreadPool;
+import threadpool.model.Entity1;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

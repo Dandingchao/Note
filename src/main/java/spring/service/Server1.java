@@ -1,14 +1,20 @@
 package spring.service;
 
+import designpattern.createpattern.prototype.Entity;
 import lombok.Data;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+import threadpool.model.Entity1;
+
+import javax.annotation.Resource;
 
 
 @Data
 @Lazy
 @Service
 public class Server1 {
+    @Resource
+    Entity1 entity1;
     private String name;
     public Server1(){
         String test="sdasada";
