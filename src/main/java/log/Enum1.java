@@ -11,7 +11,7 @@ package log;
 public enum Enum1 {
     HI(100,"sad"),
     HL(200,"ttt"),
-    T1(500,"cxzjioaz");
+    T1(500,"sdjka");
 
     private int code;
     private final String word;

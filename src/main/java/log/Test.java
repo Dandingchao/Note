@@ -11,6 +11,7 @@ public class Test {
     @org.junit.Test
     public void test(){
         System.out.println(Enum1.HI.code()+Enum1.HL.code());
+        System.out.println(Enum1.T1);
         Enum1.HL.setCode(500);
         System.out.println(Enum1.HL.code());
         System.out.println(SayImplService.class);

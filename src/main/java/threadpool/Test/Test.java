@@ -1,19 +1,17 @@
 package threadpool.Test;
 
 import threadpool.entity.TestEntity4ThreadSychronized;
+import threadpool.model.Entity1;
+import threadpool.model.Entity2;
+import threadpool.poolentity.Pool;
 
 public class Test {
     public static void main(String[] args) {
-        TestEntity4ThreadSychronized a=new TestEntity4ThreadSychronized();
-        Thread thread1=new Thread(a);
-        Thread thread2=new Thread(a);
-        thread1.start();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("ready to run");
-        thread2.start();
+        Entity2 entity1=new Entity2();
+        Thread thread=new Thread(entity1);
+        Thread thread1=new Thread(entity1);
+        Pool pool=new Pool();
+        pool.getThreadPoolExecutor().submit(thread1);
+        pool.getThreadPoolExecutor().execute(thread);
     }
 }
