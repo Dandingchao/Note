@@ -10,6 +10,7 @@ public class Test {
         Entity2 entity1=new Entity2();
         Thread thread=new Thread(entity1);
         Thread thread1=new Thread(entity1);
+        thread.start();
         Pool pool=new Pool();
         pool.getThreadPoolExecutor().submit(thread1);
         pool.getThreadPoolExecutor().execute(thread);
