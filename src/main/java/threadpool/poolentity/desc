@@ -1,0 +1,14 @@
+线程池构造参数:核心线程size，最大线程size，等待时间单位，等待时间长度，阻塞队列，线程工厂，拒绝策略
+JDK封装好的线程池创建方法，
+由于FixedThreadPool 和 SingleThreadPool：
+允许的请求队列长度为 Integer.MAX_VALUE ，会堆积大量请求OOM(即阻塞队列)
+CachedThreadPool 和 ScheduledThreadPool：
+允许的创建线程数量为 Integer.MAX_VALUE，可能会创建大量线程OOM(即允许存在的最大线程数)
+
+所以，创建线程池请通过ThreadPoolExecutor创建
+
+线程构造参数:
+
+线程池可以自定义线程工厂
+线程工厂 类似装饰器模式，在你创建线程的原先基础上增加其他的操作
+线程工厂默认的话就是默认的构造线程的方法，自定义的话，就是在原先创建线程方法的基础上增加你想要做的操作，所以我认为这个和装饰器更类似
