@@ -22,3 +22,6 @@ tk.mybatis
 自动提供的方法中使用byCondition
 需要新建tk.mybatis中的condition类，新建condition =new Condition(对应表的class.class)
 之后对condition设定条件，设定之后再把condition作为参数传入byCondition的方法中
+
+
+启动类不能直接放在java下，要放在java里的包里
