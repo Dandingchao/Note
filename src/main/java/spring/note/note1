@@ -1,0 +1,14 @@
+spring可以解决非构造器导致的循环依赖，即并非在类构造时就进行的依赖注入spring可以进行解决
+解决方法是，在没有使用到类的依赖类的相关方法时不对该依赖进行注入，即在类初始化时不进行相关的依赖注入，直到具体方法调用时
+再进行相关依赖的注入。如果是构造器的循环依赖，即在类初始化时就进行的依赖注入(具体方法时在初始化函数中进行set方法进行依赖注入)
+则spring无法解决
+spring具体解决循环依赖的方法是建立了一个三级的缓存目录，分别存放不同状态的bean,缓存目录的实现是map
+map<String,Object>
+即spring会先将所有对象都先实例化，之后在对实例化的对象进行依赖的注入
+
+singletonObjects	一级缓存，存放完整的 Bean。
+earlySingletonObjects	二级缓存，存放提前暴露的Bean，Bean 是不完整的，未完成属性注入和执行 init 方法。
+singletonFactories	三级缓存，存放的是 Bean 工厂，主要是生产 Bean，存放到二级缓存中。
+
+
+https://www.jb51.net/article/197450.htm

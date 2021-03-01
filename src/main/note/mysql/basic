@@ -38,3 +38,5 @@ atomicity  consistency  isolation   durability
 
 插入数据的时候，含有多个values的语句和多个单values的语句，就性能上的对比来说，后者更快
 要想优化存储过程，应该将多个要执行的语句包装进同一个事物中执行//减少连接时间
+
+

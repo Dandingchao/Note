@@ -1,0 +1,5 @@
+linux上的CPU使用率过高排查，使用top命令，可以查看各进程的各种资源的使用情况
+如果是mysql数据库使用的CPU过高，通常都是因为慢sql语句造成的，因为扫描的数据量过大，占据了过多的cpu资源。
+由此必须要进行相关sql语句的优化，排查相关的sql语句则在数据库管理里输入sql:show full processlist
+在status状态上存在sending data,copying to tmp table,copying to tmp table on disk,sorting result,using filesort,locked
+相关词条的sql语句通常就是造成CPU大量占用的原因，需要考虑进行优化
