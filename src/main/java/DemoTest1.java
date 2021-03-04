@@ -19,4 +19,23 @@ public class DemoTest1 {
             }
         }
     }
+    public void quicksort(int[] a,int start,int end){
+        if (start>=end)
+            return ;
+        Integer length=a.length;
+        int temporary=a[start];
+        int begin=start;
+        int over=end;
+        while (over>begin) {
+            while (a[begin++] <= a[temporary]) ;
+            while (a[end--] > a[temporary]) ;
+            int swap = a[begin];
+            a[begin] = a[end];
+            a[end] = swap;
+        }
+        a[start]=a[begin];
+        a[begin]=temporary;
+        quicksort(a,start,begin);
+        quicksort(a,begin+1,end);
+    }
 }
