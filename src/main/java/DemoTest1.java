@@ -8,9 +8,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class DemoTest1 {
     public static void main(String[] args) {
+        ThreadLocal<String> local=new ThreadLocal<>();
         String a="dsadas";
         String s="sjilxczz";
         for (int i=0;i<a.length();i++){
