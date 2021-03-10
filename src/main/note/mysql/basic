@@ -44,3 +44,27 @@ atomicity  consistency  isolation   durability
 第一范式：具有原子性
 第二范式：主键列与非主键列遵循完全函数依赖关系
 第三范式：非主键列之间没有传递函数依赖关系
+
+创建数据库时设置引擎:
+Create table tableName(
+
+columnName(列名1)  type(数据类型)  attri(属性设置),
+
+columnName(列名2)  type(数据类型)  attri(属性设置),
+
+……..) engine = engineName
+
+创建表时设置引擎:
+create table user(
+
+id int not null auto_increment,
+
+username char(20) not null,
+
+sex char(2),
+
+primary key(id)
+
+) engine=merge
+
+修改表引擎:Alter table tableName engine =engineName
