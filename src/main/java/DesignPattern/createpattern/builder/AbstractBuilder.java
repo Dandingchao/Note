@@ -9,5 +9,5 @@ public abstract class AbstractBuilder {
 
     public abstract void setAge();
 
-    public abstract BuilderEntity getEntity();
+    public abstract Designpattern.createpattern.builder.BuilderEntity getEntity();
 }

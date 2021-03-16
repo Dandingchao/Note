@@ -1,4 +1,4 @@
-package designpattern.createpattern.builder;
+package Designpattern.createpattern.builder;
 /**
 * @Description:  构造者模式的目的在于将实体的创建与定义分离，在创建一些实体类中有些不需要一开始就定义的参数的时候可以用构造者模式.
  * 简化构造函数的写法
