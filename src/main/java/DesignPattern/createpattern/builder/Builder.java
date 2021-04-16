@@ -1,7 +1,7 @@
 package designpattern.createpattern.builder;
-import  Designpattern.createpattern.builder.BuilderEntity;
+import  designpattern.createpattern.builder.BuilderEntity;
 
-public class Builder extends AbstractBuilder {
+public class Builder extends designpattern.createpattern.builder.AbstractBuilder {
     private BuilderEntity builderEntity=new BuilderEntity();
     @Override
     public BuilderEntity getEntity()

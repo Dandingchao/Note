@@ -42,4 +42,21 @@ public class Pool {
          ThreadPoolExecutor.CallerRunsPolicy：由调用线程（提交任务的线程）处理该任务
          */
     };
+    public static class MyThreadFactory implements ThreadFactory{
+        @Override
+        public Thread newThread(Runnable r) {
+            System.out.println("I created by this factory");
+            return new Thread(r);
+        }
+    }
+    
+    public static class MyRejectExecutionHandler implements RejectedExecutionHandler{
+
+        @Override
+        public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+            throw new RejectedExecutionException("Task " + r.toString() +
+                    " rejected from " +
+                    executor.toString());
+        }
+    }
 }

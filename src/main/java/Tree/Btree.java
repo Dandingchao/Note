@@ -231,4 +231,37 @@ public class Btree {
         return Math.max(subLeft,subRight)+note.getValue();
     }
 
+    //完全二叉树查找最后一个子节点，字节面试碰到的，O(logn)
+    public Btree lastLeafNode(Btree node){
+        if (node==null){
+            return null;
+        }
+        if (node.getleft()!=null && node.getRight()!=null){
+            Btree left=getleft();
+            Btree right=getRight();
+            int leftCount=0;
+            int rightCount=0;
+            while (left!=null){
+                leftCount++;
+                left=left.getleft();
+            }
+            while (right!=null){
+                rightCount++;
+                right=right.getleft();
+            }
+            if (leftCount>rightCount){
+                return lastLeafNode(node.getleft());
+            }else {
+                return lastLeafNode(node.getRight());
+            }
+        }
+        if (node.getRight()==null && node.getleft()==null){
+            return node;
+        }
+        if (node.getleft()!=null && node.getRight()==null){
+            return node.getleft();
+        }
+        return null;
+    }
+
 }
