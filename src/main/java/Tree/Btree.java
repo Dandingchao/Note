@@ -264,4 +264,24 @@ public class Btree {
         return null;
     }
 
+    //求完全二叉树的最后一个叶子节点，时间复杂度我算这个是logn平方，面试碰到的题，面试官要求logn?
+    public Btree lastLeafNode1(Btree node){
+        if (node==null){
+            return null;
+        }
+        if (node.getleft()!=null && node.getRight()!=null){
+            Btree left=getleft();
+            Btree right=getRight();
+            int leftCount=0;
+            int rightCount=0;
+        }
+        if (node.getRight()==null && node.getleft()==null){
+            return node;
+        }
+        if (node.getleft()!=null && node.getRight()==null){
+            return node.getleft();
+        }
+        return null;
+    }
+
 }
