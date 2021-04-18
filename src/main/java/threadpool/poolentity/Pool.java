@@ -12,10 +12,10 @@ public class Pool {
     private ThreadPoolExecutor threadPoolExecutor;
     public Pool() {
         this.threadPoolExecutor = new ThreadPoolExecutor(10,
-                50,
+                60,
                 10000,
                 TimeUnit.MILLISECONDS,
-                new LinkedBlockingDeque<>(),
+                new LinkedBlockingDeque<>(10),
                 factory,
                 rejectedExecutionHandler);
 
@@ -25,7 +25,7 @@ public class Pool {
 
     ThreadFactory factory =(r)->{
         Thread t = new Thread(r);
-        System.out.println("我是线程" + r);
+        System.out.println("我是线程");
         return t;
     };
 

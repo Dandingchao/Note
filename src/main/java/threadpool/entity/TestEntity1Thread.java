@@ -23,14 +23,14 @@ public class TestEntity1Thread implements Runnable {
             String[] da = name.split("@");
             System.out.println("Now thread pid is" + da[0] + ",now Time is " + date + ",now thread is " + Thread.currentThread().getName());
             try {
-                Thread.sleep(5000);
-                if (count==1){
+                Thread.sleep(10000);
+                /*if (count==1){
                     count=2;
                     System.out.println(list.get(1));
                 }else{
                     count=1;
                     System.out.println(list.get(100));
-                }
+                }*/
             } catch (Exception e) {
                 e.printStackTrace();
             }
