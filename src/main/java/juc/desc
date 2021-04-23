@@ -1,0 +1,7 @@
+juc结构:
+原子类——主要是一些基础类使用CAS方法达到线程安全
+并发锁——reentranlock，reentranreadwritelock，stampedlock
+并发队列——阻塞队列和非阻塞队列
+并发集合——线程安全的集合
+同步工具类——countdownlatch...
+线程池——threadpoolexecutor
