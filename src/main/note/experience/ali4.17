@@ -13,6 +13,16 @@ full gc触发方式，频繁full gc如何检测
 老年代满，手动触发system.gc()
 
 mysql limit优化
+设置索引，在搜索的时候使用上索引，（主键索引或唯一索引，唯一索引指索引值在表中唯一）
+select * from table_name limit start,num;不用索引，全文搜索，数量大很慢。
+达成 select * from table_name where t.pk>(pageNum*pageSize) limit pageSize;使用主键
+select * from table_name where t.pk>(pageNum*pageSize) order by t.pk limit pageSize;使用主键，同时排序
+可以用子查询优化
+类似:
+select * from orders_history where type=8 and
+id>=(select id from orders_history where type=8 limit 100000,1)
+limit 100;
+
 复合索引
 例，索引abc。当搜索中使用到abc，ab，a时会使用该索引。具体使用何种索引，取决于数据库对搜索优化后的结果
 数据库每次搜索只有一条搜因会被使用到，同时索引遵循最左匹配原则，即使sql语句为 c==xx,b==xx,a==x,仍会使用abc索引。
