@@ -1,6 +1,7 @@
 package threadpool.poolentity;
 
 import lombok.Data;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -10,6 +11,7 @@ import java.util.concurrent.*;
 public class Pool {
     private ExecutorService executorService;
     private ThreadPoolExecutor threadPoolExecutor;
+    private ThreadPoolTaskScheduler threadPoolTaskScheduler;
     public Pool() {
         this.threadPoolExecutor = new ThreadPoolExecutor(10,
                 60,

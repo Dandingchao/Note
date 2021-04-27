@@ -10,6 +10,8 @@
 
 
 full gc触发方式，频繁full gc如何检测
+使用jconsole,jvisualVM连接进程查看存活对象,内存空间占据,判断
+查看gc时的日志,定位问题
 老年代满，手动触发system.gc()
 
 mysql limit优化
