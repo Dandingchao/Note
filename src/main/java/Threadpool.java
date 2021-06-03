@@ -7,6 +7,7 @@ import java.util.concurrent.*;
 
 public class Threadpool {
     public static void main(String[] args) {
+        ThreadLocal<Integer> threadLocal=new ThreadLocal<>();
         LinkedBlockingQueue<Runnable> queue2=new LinkedBlockingQueue<Runnable>();
         ExecutorService pool= Executors.newScheduledThreadPool(10);
         ThreadPoolExecutor standard =new ThreadPoolExecutor(10,10,1000, TimeUnit.MILLISECONDS,queue2);
