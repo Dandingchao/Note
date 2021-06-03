@@ -5,3 +5,7 @@ juc结构:
 并发集合——线程安全的集合
 同步工具类——countdownlatch...
 线程池——threadpoolexecutor
+
+try方法都不会阻塞并返回获取结果(true/false),获取同步信息的方法会阻塞
+例如tryAcquire ,Acquire Semaphore
+   tryLock,lock ReenTrantLock
