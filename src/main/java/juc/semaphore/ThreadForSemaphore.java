@@ -2,6 +2,8 @@ package juc.semaphore;
 
 import java.util.concurrent.Semaphore;
 
+
+//acquire blocing , tryacuqire non-blocking
 public class ThreadForSemaphore implements Runnable{
     private Semaphore semaphore;
 
